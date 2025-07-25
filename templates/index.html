@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bem-vindo | Lab AZ-700</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    h1 { color: #2d89ef; }
+    ul { line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <h1>Bem-vindo ao Lab AZ-700 - Application Gateway</h1>
+  <p>Esta instância está pronta para o teste de balanceamento de carga.</p>
+  <h2>Informações:</h2>
+  <ul>
+    <li><strong>Hostname:</strong> {{ info.hostname }}</li>
+    <li><strong>Instance ID:</strong> {{ info.website_instance_id }}</li>
+    <li><strong>Python:</strong> {{ info.python_version }}</li>
+    <li><strong>Client IP:</strong> {{ info.client_ip }}</li>
+    <li><strong>Uptime:</strong> {{ uptime }}s</li>
+  </ul>
+  <p>Endpoints úteis: <code>/healthz</code> | <code>/whoami</code></p>
+</body>
+</html>

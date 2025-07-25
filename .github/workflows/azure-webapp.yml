@@ -1,0 +1,34 @@
+name: Azure WebApp Python CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Criar pacote ZIP
+        run: zip -r release.zip . -x '*.git*'
+
+      - name: Deploy para Azure WebApp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: SEU_WEBAPP_NAME
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: release.zip
